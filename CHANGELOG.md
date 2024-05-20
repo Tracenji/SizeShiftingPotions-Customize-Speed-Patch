@@ -1,3 +1,4 @@
-- Rewrite mod to use arch loom
-- Fixed forge version not including midnightlib
-- Added size change factor to the config, which allows you to change the factor at which the potions change your size.
+- Add reach to size modifier #16 (Thanks @Buwwet)
+- Bump midnightlib_forge depency to 1.4.2 #17 (Thanks @PeriBooty)
+  - This fixes the forge version crashing.
+- The reach modifier for the growth & shrinking potions can be disabled in the config, enabled by default.

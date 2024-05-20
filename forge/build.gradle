@@ -1,11 +1,7 @@
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
-    id "com.github.breadmoirai.github-release" version "2.4.1"
-    id "com.modrinth.minotaur" version "2.+"
-    id 'net.darkhax.curseforgegradle' version '1.1.15'
+    alias libs.plugins.publishing
 }
-apply from: "https://raw.githubusercontent.com/UltrusBot/GradleScripts/${project.upload_script_version}/release.gradle"
 
 
 repositories {
@@ -48,20 +44,44 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 }
 
-var mod = createModReleaseMetadata(
-        "Size Shifting Potions v${project.version} Forge",
-        file("$rootDir/CHANGELOG.md"),
-        ["1.20.1"],
-        ["forge"],
-        "remapJar",
-        ["remapSourcesJar"],
-        "v${project.version}-forge",
-        false
-)
-modrinthInfo(mod, "sizeshiftingpotions", ["pehkui"], [], [], ["midnightlib"])
-githubInfo(mod, "UltrusBot", "SizeShiftingPotions", "1.20")
-curseforgeInfo(mod, TaskPublishCurseForge, "447440", ["midnightlib"], ["pehkui"])
+publishMods {
+    displayName = "Size Shifting Potions v${project.version} Forge"
+    file = remapJar.archiveFile
+    changelog = file("$rootDir/CHANGELOG.md").text
+    version = "v${project.version}-forge"
+    type = STABLE
+    modLoaders.addAll("forge")
+    curseforge {
+        projectId = "447440"
+        minecraftVersions.add("1.20.1")
+        accessToken = providers.gradleProperty("CF_API_KEY")
+        embeds {
+            slug = "midnightlib"
+        }
+        requires {
+            slug = "pehkui"
+        }
+    }
+    modrinth {
+        projectId = "rfj2v0X6"
+        minecraftVersions.add("1.20.1")
+        accessToken = providers.gradleProperty("MODRINTH_TOKEN")
+        embeds {
+            slug = "midnightlib"
+        }
+        requires {
+            slug = "pehkui"
+        }
+    }
+    github {
+        repository = "UltrusBot/SizeShiftingPotions"
+        commitish = "1.20"
+        accessToken = providers.gradleProperty("GH_TOKEN")
+        tagName = "v$project.version"
+    }
 
+    dryRun = false
+}
 
 processResources {
     inputs.property "version", project.version

@@ -12,8 +12,8 @@ public class SizeShiftingPotionsFabric implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        SizeShiftingPotionsCommon.init();
         MidnightConfig.init(Constants.MOD_ID, SizeShiftingPotionsConfig.class);
+        SizeShiftingPotionsCommon.init();
         SizeShiftingPotionsEffects.register(((identifier, statusEffect) -> Registry.register(Registries.STATUS_EFFECT, identifier, statusEffect)));
         SizeShiftingPotionsPotions.register(((identifier, potion) -> Registry.register(Registries.POTION, identifier, potion)));
     }

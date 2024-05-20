@@ -20,4 +20,6 @@ public class SizeShiftingPotionsConfig extends MidnightConfig {
 
     @Comment public static Comment netherFungus;
     @Entry public static boolean useNetherFungus = false;
+
+    @Entry public static boolean addReachModifier = true;
 }

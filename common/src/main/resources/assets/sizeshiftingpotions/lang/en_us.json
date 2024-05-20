@@ -61,7 +61,8 @@
   "sizeshiftingpotions.midnightconfig.useNetherFungus": "Use Nether Fungus",
   "sizeshiftingpotions.midnightconfig.netherFungus": "This switches the recipes to instead use the nether fungus, instead of the overworld mushrooms.",
   "sizeshiftingpotions.midnightconfig.requireRestart": "The options below all require a game restart.",
-  "sizeshiftingpotions.midnightconfig.sizeChangeFactor": "Size Change Factor"
+  "sizeshiftingpotions.midnightconfig.sizeChangeFactor": "Size Change Factor",
+  "sizeshiftingpotions.midnightconfig.addReachModifier": "Add Reach Modifier to Growing & Shrinking Potions"
 
 
 }

@@ -1,6 +1,7 @@
 package me.ultrusmods.sizeshiftingpotions;
 
 
+import me.ultrusmods.sizeshiftingpotions.config.SizeShiftingPotionsConfig;
 import net.minecraft.util.Identifier;
 import virtuoel.pehkui.api.*;
 
@@ -34,7 +35,9 @@ public class CustomScaleTypes {
         ScaleTypes.VISIBILITY.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
         ScaleTypes.MOTION.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
 
-        ScaleTypes.REACH.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
+        if (SizeShiftingPotionsConfig.addReachModifier) {
+            ScaleTypes.REACH.getDefaultBaseValueModifiers().add(SIZE_MODIFIER);
+        }
 
         ScaleTypes.WIDTH.getDefaultBaseValueModifiers().add(THICKNESS_MODIFIER);
     }
