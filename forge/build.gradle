@@ -77,7 +77,7 @@ publishMods {
         repository = "UltrusBot/SizeShiftingPotions"
         commitish = "1.20"
         accessToken = providers.gradleProperty("GH_TOKEN")
-        tagName = "v$project.version"
+        tagName = "v$project.version-forge"
     }
 
     dryRun = false
