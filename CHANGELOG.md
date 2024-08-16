@@ -1,4 +1,2 @@
-- Add reach to size modifier #16 (Thanks @Buwwet)
-- Bump midnightlib_forge depency to 1.4.2 #17 (Thanks @PeriBooty)
-  - This fixes the forge version crashing.
-- The reach modifier for the growth & shrinking potions can be disabled in the config, enabled by default.
+- Update to 1.21
+- Port to NeoForge

@@ -2,7 +2,7 @@ package me.ultrusmods.sizeshiftingpotions;
 
 
 import me.ultrusmods.sizeshiftingpotions.config.SizeShiftingPotionsConfig;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import virtuoel.pehkui.api.*;
 
 public class CustomScaleTypes {
@@ -22,11 +22,11 @@ public class CustomScaleTypes {
         builder.addDependentModifier(dependantModifier);
 
         return ScaleRegistries.register(ScaleRegistries.SCALE_TYPES,
-                new Identifier(Constants.MOD_ID, id),
+                ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, id),
                 builder.build());
     }
     public static ScaleModifier registerModifier(String id, ScaleModifier modifier) {
-        return ScaleRegistries.register(ScaleRegistries.SCALE_MODIFIERS, new Identifier(Constants.MOD_ID, id), modifier);
+        return ScaleRegistries.register(ScaleRegistries.SCALE_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, id), modifier);
     }
 
     public static void init() {

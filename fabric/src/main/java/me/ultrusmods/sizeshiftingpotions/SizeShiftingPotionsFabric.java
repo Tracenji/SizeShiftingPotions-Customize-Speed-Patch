@@ -1,20 +1,22 @@
 package me.ultrusmods.sizeshiftingpotions;
 
-import eu.midnightdust.lib.config.MidnightConfig;
-import me.ultrusmods.sizeshiftingpotions.config.SizeShiftingPotionsConfig;
 import me.ultrusmods.sizeshiftingpotions.register.SizeShiftingPotionsEffects;
 import me.ultrusmods.sizeshiftingpotions.register.SizeShiftingPotionsPotions;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class SizeShiftingPotionsFabric implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        MidnightConfig.init(Constants.MOD_ID, SizeShiftingPotionsConfig.class);
-        SizeShiftingPotionsCommon.init();
-        SizeShiftingPotionsEffects.register(((identifier, statusEffect) -> Registry.register(Registries.STATUS_EFFECT, identifier, statusEffect)));
-        SizeShiftingPotionsPotions.register(((identifier, potion) -> Registry.register(Registries.POTION, identifier, potion)));
+        SizeShiftingPotionsMod.init();
+        SizeShiftingPotionsEffects.register((id, effect) -> Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, id, effect));
+        SizeShiftingPotionsPotions.register((id, potion) -> Registry.registerForHolder(BuiltInRegistries.POTION, id, potion));
+//        SizeShiftingPotionsMod.registerRecipes()
+        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
+            SizeShiftingPotionsMod.registerRecipes(builder::addMix);
+        });
     }
 }

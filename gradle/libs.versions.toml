@@ -1,31 +1,45 @@
 [versions]
-minecraft = "1.20.1"
-fabric_loader = "0.14.21"
-fabric_api = "0.84.0+1.20.1"
-forge = "1.20.1-47.0.19"
-midnightlib_forge = "1.4.2-forge"
-midnightlib_fabric = "1.4.1-fabric"
-pehkui_fabric = "3.7.7"
-pehkui_forge = "3.7.7-1.20.1-forge"
-publishing = "0.3.5"
+minecraft = "1.21"
+fabric_loader = "0.15.11"
+fabric_api = "0.100.7+1.21"
+neoforge = "21.0.143"
+modmenu = "11.0.1"
 
-# Extra Libraries
-emi = "1.0.5+1.20.1"
+pehkui_fabric = "3.8.3"
+pehkui_forge = "3.8.3-1.21-neoforge"
+midnightlib_forge = "1.5.8-neoforge"
+midnightlib_fabric = "1.5.8-fabric"
 
+# Mixin
+fabric_mixin = "0.15.0+mixin.0.8.7"
+mixin_extras = "0.4.0"
+
+# Plugins
+fabric_loom = "1.7-SNAPSHOT"
+publishing = "0.6.2"
+neoforge_moddev = "1.0.13"
 
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
 fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
-forge = { module = "net.minecraftforge:forge", version.ref = "forge" }
+neoforge = { module = "net.minecraftforge:forge", version.ref = "neoforge" }
 
-# Extra Libraries
-emi = { module = "dev.emi:emi-fabric", version.ref = "emi" }
 midnightlib_forge = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_forge" }
 midnightlib_fabric = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib_fabric" }
 pehkui_fabric = { module = "com.github.Virtuoel:Pehkui", version.ref = "pehkui_fabric" }
 pehkui_forge = { module = "com.github.Virtuoel:Pehkui", version.ref = "pehkui_forge" }
 
+# Extra Libraries
+modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+
+# Mixin
+fabric_mixin = { module = "net.fabricmc:sponge-mixin", version.ref = "fabric_mixin" }
+mixin_extras = { module = "io.github.llamalad7:mixinextras-common", version.ref = "mixin_extras" }
+
 [plugins]
+fabric_loom = { id = "fabric-loom", version.ref = "fabric_loom" }
 publishing = { id = "me.modmuss50.mod-publish-plugin", version.ref = "publishing" }
+neoforge_moddev = { id = "net.neoforged.moddev", version.ref = "neoforge_moddev" }
+#machete = { id = "io.github.p03w.machete", version.ref = "machete" }

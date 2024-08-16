@@ -1,32 +1,37 @@
 {
-  "schemaVersion": 1,
-  "id": "sizeshiftingpotions",
-  "version": "${version}",
-  "name": "Size Shifting Potions",
-  "description": "Adds shrinking and growing potions to the game!",
-  "authors": [
-    "UltrusMods"
-  ],
-  "contact": {
-    "sources": "https://github.com/UltrusBot/SizeShiftingPotions",
-    "issues": "https://github.com/UltrusBot/SizeShiftingPotions/issues"
-  },
-  "license": "MIT",
-  "icon": "assets/sizeshiftingpotions/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "me.ultrusmods.sizeshiftingpotions.SizeShiftingPotionsFabric"
-    ]
-  },
-  "mixins": [
-    "sizeshiftingpotions.mixins.json",
-    "sizeshiftingpotions-common.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.11.1",
-    "fabric": "*",
-    "minecraft": "1.20.x",
-    "pehkui": "*"
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${mod_version}+${minecraft_version}",
+    "name": "${mod_name}",
+    "description": "${mod_description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contributors": [
+        ${fabric_mod_contributors}
+    ],
+    "contact": {
+        "homepage": "${homepage}",
+        "issues": "https://github.com/${sources}/issues",
+        "sources": "https://github.com/${sources}"
+    },
+    "license": "${mod_license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+          "me.ultrusmods.sizeshiftingpotions.SizeShiftingPotionsFabric"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": "${fabric_loader_range}",
+        "fabric-api": "*",
+        "minecraft": "${fabric_minecraft_version_range}",
+        "java": ">=${java_version}",
+        "pehkui": "*"
     }
 }

@@ -1,49 +1,48 @@
 package me.ultrusmods.sizeshiftingpotions.register;
 
 import me.ultrusmods.sizeshiftingpotions.Constants;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.potion.Potion;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.alchemy.Potion;
 
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
 
 // Gotta stick with my name convention, even if it leads to this.
 public class SizeShiftingPotionsPotions {
 
-    public static Potion GROWING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.GROWING, 3600));
-    public static Potion LONG_GROWING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.GROWING, 9600));
-    public static Potion STRONG_GROWING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.GROWING, 1800, 1));
+    public static Holder<Potion> GROWING_POTION;
+    public static Holder<Potion> LONG_GROWING_POTION;
+    public static Holder<Potion> STRONG_GROWING_POTION;
 
-    public static Potion SHRINKING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 3600));
-    public static Potion LONG_SHRINKING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 9600));
-    public static Potion STRONG_SHRINKING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 1800, 1));
+    public static Holder<Potion> SHRINKING_POTION;
+    public static Holder<Potion> LONG_SHRINKING_POTION;
+    public static Holder<Potion> STRONG_SHRINKING_POTION;
 
-    public static Potion WIDENING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.WIDENING, 3600));
-    public static Potion LONG_WIDENING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.WIDENING, 9600));
-    public static Potion STRONG_WIDENING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.WIDENING, 1800, 1));
+    public static Holder<Potion> WIDENING_POTION;
+    public static Holder<Potion> LONG_WIDENING_POTION;
+    public static Holder<Potion> STRONG_WIDENING_POTION;
 
-    public static Potion THINNING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.THINNING, 3600));
-    public static Potion LONG_THINNING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.THINNING, 9600));
-    public static Potion STRONG_THINNING_POTION = new Potion(new StatusEffectInstance(SizeShiftingPotionsEffects.THINNING, 1800, 1));
-    
-    public static void register(BiConsumer<Identifier, Potion> consumer) {
-        consumer.accept(new Identifier(Constants.MOD_ID, "growing"), GROWING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "growing_long"), LONG_GROWING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "growing_strong"), STRONG_GROWING_POTION);
+    public static Holder<Potion> THINNING_POTION;
+    public static Holder<Potion> LONG_THINNING_POTION;
+    public static Holder<Potion> STRONG_THINNING_POTION;
 
-        consumer.accept(new Identifier(Constants.MOD_ID, "shrinking"), SHRINKING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "shrinking_long"), LONG_SHRINKING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "shrinking_strong"), STRONG_SHRINKING_POTION);
+    public static void register(BiFunction<ResourceLocation, Potion, Holder<Potion>> consumer) {
 
-        consumer.accept(new Identifier(Constants.MOD_ID, "widening"), WIDENING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "widening_long"), LONG_WIDENING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "widening_strong"), STRONG_WIDENING_POTION);
+        GROWING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "growing"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.GROWING, 3600)));
+        LONG_GROWING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "growing_long"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.GROWING, 9600)));
+        STRONG_GROWING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "growing_strong"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.GROWING, 1800, 1)));
 
-        consumer.accept(new Identifier(Constants.MOD_ID, "thinning"), THINNING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "thinning_long"), LONG_THINNING_POTION);
-        consumer.accept(new Identifier(Constants.MOD_ID, "thinning_strong"), STRONG_THINNING_POTION);
+        SHRINKING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "shrinking"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 3600)));
+        LONG_SHRINKING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "shrinking_long"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 9600)));
+        STRONG_SHRINKING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "shrinking_strong"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.SHRINKING, 1800, 1)));
+
+        WIDENING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "widening"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.WIDENING, 3600)));
+        LONG_WIDENING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "widening_long"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.WIDENING, 9600)));
+        STRONG_WIDENING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "widening_strong"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.WIDENING, 1800, 1)));
+
+        THINNING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "thinning"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.THINNING, 3600)));
+        LONG_THINNING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "thinning_long"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.THINNING, 9600)));
+        STRONG_THINNING_POTION = consumer.apply(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "thinning_strong"), new Potion(new MobEffectInstance(SizeShiftingPotionsEffects.THINNING, 1800, 1)));
     }
 }
