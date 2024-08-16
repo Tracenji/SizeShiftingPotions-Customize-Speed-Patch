@@ -8,7 +8,9 @@ plugins {
     alias(libs.plugins.neoforge.moddev)
     alias(libs.plugins.publishing)
 }
-
+base {
+    archivesName = archivesName.get() + "-neoforge"
+}
 val parchment_version: String by project
 neoForge {
     version = libs.neoforge.get().version

@@ -16,6 +16,9 @@ repositories {
     }
 }
 
+base {
+    archivesName = archivesName.get() + "-fabric"
+}
 dependencies {
     minecraft(libs.minecraft);
     mappings(loom.officialMojangMappings())
